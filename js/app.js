@@ -42,10 +42,17 @@ function htmlCart() {
     cleanHTML();
 
     cartItems.forEach(course => {
+        const { image, title, price, number, id } = course;
         const row = document.createElement('tr');
         row.innerHTML = `
             <td>
-                ${course.title}
+                <img src="${image}" width="100">
+            </td>
+            <td>${title}</td>
+            <td>${price}</td>
+            <td>${number}</td>
+            <td>
+                <a href="#" class="delete-course" data-id="${id}">X</a>
             </td>
         `;
 
