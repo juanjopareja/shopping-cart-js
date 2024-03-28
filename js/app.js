@@ -31,9 +31,24 @@ function readCourseData(course) {
         id: course.querySelector('a').getAttribute('data-id'),
         number: 1
     }
+
+    const exists = cartItems.some(course => course.id === courseInfo.id);
     
-    cartItems = [...cartItems, courseInfo];
-    console.log(cartItems);
+    if(exists) {
+        const courses = cartItems.map(course => {
+            if(course.id === courseInfo.id) {
+                course.number++;
+                return course;
+            } else {
+                return course;
+            }
+        });
+
+        cartItems = [...courses];
+
+    } else {
+        cartItems = [...cartItems, courseInfo];
+    }
 
     htmlCart();
 }
